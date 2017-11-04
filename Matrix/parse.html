@@ -1,0 +1,162 @@
+<MySource_AREA id_name="exit_area" design_area="exit" print="no"></MySource_AREA>
+
+<MySource_AREA id_name="nested_EES_code" design_area="nest_content" print="no" />
+
+<MySource_AREA id_name="simple_edit_EES" design_area="show_if">
+
+    <MySource_SET name="condition" value="simple_edit_mode" />
+    
+    <MySource_THEN>
+    
+        <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+        <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+            <head>
+            
+                <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+                
+                <!-- EES install and implementation help: http://manuals.matrix.squizsuite.net/ees/chapters/installation -->
+                
+                <!-- The title tag is dynamically replaced by EES code, see your EES config.js file to customise -->
+                <!-- Related install step: http://manuals.matrix.squizsuite.net/ees/chapters/installation/#Constructing-the-Configuration-File -->
+                <title>Loading Easy Edit Suite...</title>
+                
+                <!-- Use a nested standard page (set to raw html) for custom CSS and JS file references. Avoids editing design file. -->
+                <MySource_PRINT id_name="nested_EES_code" />
+                
+            </head>
+            <body></body>
+        </html>
+        
+        <MySource_PRINT id_name="exit_area" />
+        
+    </MySource_THEN>
+
+</MySource_AREA>
+
+<!DOCTYPE html>
+
+<!-- paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html lang="en"> <!--<![endif]-->
+<head>
+    <meta charset="utf-8" />
+
+    <!-- Set the viewport width to device width for mobile -->
+    <meta name="viewport" content="width=device-width" />
+
+    <title><MySource_PRINT var="site_name" /> - <MySource_PRINT var="asset_name" /></title>
+  
+    <!-- Included CSS Files -->
+        <MySource_AREA id_name="foundations" design_area="linked_css" />
+        <MySource_AREA id_name="lightbox_css" design_area="linked_css" cache="1" />
+        <MySource_AREA id_name="calendar_css" design_area="linked_css" cache="1" />
+    <!--[if lt IE 9]>
+        <MySource_AREA id_name="ie_css" design_area="linked_css" />
+    <![endif]-->
+
+
+    <!-- IE Fix for HTML5 Tags -->
+    <!--[if lt IE 9]>
+        <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+<!-- Scripts -->
+
+</head>
+<body>
+
+    <!-- container -->
+    <div class="container">
+<div class="row"><header><h1 class="left"><img src="./?a=6005" alt="labour" />&nbsp;<MySource_PRINT var="site_name" /></h1>
+<div class="right">
+<MySource_AREA id_name="logon_box" design_area="show_if"> 
+  <MySource_SET name="condition" value="logged_in" /> 
+  <MySource_THEN>
+Hello <strong><MySource_PRINT id_name="__global__" var="current_user" default="[Not Logged In]" attr="first_name" /></strong> Edit your <a href="./?a=5790" rel="lightbox">Account</a>
+</MySource_THEN>
+  <MySource_ELSE>
+<a href="./?a=5763" rel="lightbox">Sign in</a> or <a href="./?a=5671" rel="lightbox" target="_blank">Register</a>
+</MySource_ELSE>
+</MySource_AREA>
+</div>
+</header></div>
+<div class="row">
+    <ul class="nav-bar">
+            <MySource_AREA id_name="site_nav" design_area="menu_normal">
+<MySource_SET name="settings.class.normal" value="" />
+<MySource_SET name="settings.class.current" value="active" />
+<MySource_SET name="settings.class.hierarchy" value="hier" />
+                <MySource_SET name="level" value="top" />
+                <MySource_ASSET>
+                <li><a href="<MySource_PRINT var='asset_link' />" class="main <MySource_PRINT var="settings.class" />" title="<MySource_PRINT var="asset_short_name" />"><MySource_PRINT var="asset_short_name" /></a></li>
+                </MySource_ASSET>
+            </MySource_AREA>
+    </ul>
+</div>
+<div class="row">
+<hr />
+
+<ul class="breadcrumbs">
+<MySource_AREA id_name="Breadcrumb" design_area="asset_lineage">
+    
+      <MySource_SET name="prefix_with_divider" value="false" />
+      <MySource_SET name="suffix_with_divider" value="true" />
+      <MySource_SET name="prefix_with_home_link" value="true" />
+      <MySource_SET name="suffix_with_current_link" value="false" />
+      <MySource_SET name="show_hidden_links" value="true" />
+      <MySource_ASSET><li><a href="<MySource_PRINT var="asset_link"/>"><MySource_PRINT var="asset_short_name" /></a></li></MySource_ASSET>
+      <MySource_DIVIDER></MySource_DIVIDER>
+
+    </MySource_AREA>
+<li>&nbsp;&nbsp;<MySource_PRINT id_name="__global__" var="asset_attribute_name" /></li>
+</ul>
+<hr />
+</div>
+
+<div class="row">
+            <div class="nine columns">
+                <MySource_AREA id_name="title" design_area="nest_content" print="no" />
+                <MySource_AREA id_name="body" design_area="body" />
+            </div>
+            <div class="three columns">
+                <MySource_AREA id_name="newhampic" design_area="nest_content" />
+                <hr />
+                <MySource_AREA id_name="shapps" design_area="nest_content" />
+                <hr />
+                <MySource_AREA id_name="categories" design_area="nest_content" />
+            </div>
+
+        </div>
+<div class="row">
+<hr />
+<ul class="breadcrumbs">
+<li>&copy; <MySource_AREA id_name="year" design_area="datetime">
+<MySource_SET name="format" value="Y" />
+  <MySource_SET name="datetime" value="now" />
+</MySource_AREA></li>
+<li>&nbsp;&nbsp;Last Updated: 
+<MySource_AREA id_name="page_modified" design_area="datetime">
+  <MySource_SET name="format" value="F j, Y, g:i a" />
+  <MySource_SET name="datetime" value="updated" />
+</MySource>
+</li>
+</ul>
+<hr />
+</div>
+    </div>
+    <!-- container -->
+
+
+
+
+    <!-- Included JS Files -->
+    <script src="mysource_files/jquery.min.js"></script>
+    <script src="mysource_files/modernizr.foundation.js"></script>
+    <script src="mysource_files/foundation.js"></script>
+    <script src="mysource_files/app.js"></script>
+    <script src="mysource_files/lightbox.js"></script>
+
+</body>
+</html>
